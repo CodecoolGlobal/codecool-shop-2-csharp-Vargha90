@@ -41,6 +41,7 @@
 <!-- PaymentModal -->
 <div class="modal fade" id="customerFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="exampleModalLongTitle">Please fill out the form</h3>
@@ -95,18 +96,18 @@
                         <label for="inputBillingCountry" class="col-sm-2 col-form-label">Country*</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputBillingCountry" placeholder="Hungary" name="bCountry" required>
+                                <input type="text" class="form-control" id="inputBillingCountry" placeholder="Hungary" name="billingCountry" required>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="inputBillingCity" class="col-sm-2 col-form-label">City*</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputBillingCity" placeholder="Budapest" name="bCity" required>
+                                <input type="text" class="form-control" id="inputBillingCity" placeholder="Budapest" name="billingCity" required>
                             </div>
                         </div>
                     </div>
@@ -118,11 +119,11 @@
                         <div class="col-sm-10">
                             <div class="mt-0">
                                 <input type="number" class="form-control" id="inputBillingZip" placeholder="1111"
-                                       pattern="[0-9]{4}" name="bZip" required>
+                                       pattern="[0-9]{4}" name="billingZip" required>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
@@ -130,31 +131,31 @@
                         <div class="col-sm-10">
                             <div class="mt-0">
                                 <input type="text" class="form-control" id="inputBillingAddress"
-                                       placeholder="Kossuth street 1." name="bAddress" required>
+                                       placeholder="Kossuth street 1." name="billingAddress" required>
                             </div>
                         </div>
                     </div>
-                    
+
                     <h4>Shipping address (if differs from billing address):</h4>
-                    
+
                     <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="inputShippingCountry" class="col-sm-2 col-form-label">Country</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputShippingCountry" placeholder="Hungary" name="sCountry">
+                                <input type="text" class="form-control" id="inputShippingCountry" placeholder="Hungary" name="shippingCountry">
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="inputShippingCity" class="col-sm-2 col-form-label">City</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputShippingCity" placeholder="Budapest" name="sCity">
+                                <input type="text" class="form-control" id="inputShippingCity" placeholder="Budapest" name="shippingCity">
                             </div>
                         </div>
                     </div>
@@ -165,18 +166,18 @@
                         <label for="inputShippingZip" class="col-sm-2 col-form-label">Zip code</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="number" class="form-control" id="inputShippingZip" placeholder="1111" pattern="[0-9]{4}" name="sZip">
+                                <input type="number" class="form-control" id="inputShippingZip" placeholder="1111" pattern="[0-9]{4}" name="shippingZip">
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="inputShippingAddress" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputShippingAddress" placeholder="Kossuth street 1." name="sAddress">
+                                <input type="text" class="form-control" id="inputShippingAddress" placeholder="Kossuth street 1." name="shippingAddress">
                             </div>
                         </div>
                     </div>
@@ -186,7 +187,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" form="customerDetails" value="Submit">Proceed to pay</button>
+                <button type="submit" class="btn btn-success" form="customerDetails">Proceed to pay</button>
             </div>
         </div>
     </div>
