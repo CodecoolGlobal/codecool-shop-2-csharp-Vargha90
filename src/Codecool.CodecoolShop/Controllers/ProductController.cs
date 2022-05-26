@@ -35,7 +35,6 @@ namespace Codecool.CodecoolShop.Controllers
         [HttpPost]
         public IActionResult AddToCart()
         {
-            var form = Request.Form;
             // Name and Price here
             var price = Request.Form["price"];
             var name = Request.Form["name"];
