@@ -13,8 +13,9 @@
         public string ShippingCity { get; private set; }
         public string ShippingZip { get; private set; }
         public string ShippingAddress { get; private set; }
+        public string TotalPrice { get; private set; }
 
-        public CustomerData(string name, string email, string phone,
+        public CustomerData(string price, string name, string email, string phone,
             string billingCountry, string billingCity, string billingZip, string billingAddress,
             string shippingCountry, string shippingCity, string shippingZip, string shippingAddress)
         {
@@ -29,6 +30,7 @@
             ShippingCity = shippingCity;
             ShippingZip = shippingZip;
             ShippingAddress = shippingAddress;
+            TotalPrice = price;
         }
     }
 }

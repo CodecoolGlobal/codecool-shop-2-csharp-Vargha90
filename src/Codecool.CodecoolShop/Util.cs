@@ -31,7 +31,8 @@ namespace Codecool.CodecoolShop
                         shippingCountry = data.ShippingCountry is null ? data.BillingCountry : data.ShippingCountry,
                         shippingCity = data.ShippingCity is null ? data.BillingCity : data.ShippingCity,
                         shippingZip = data.ShippingZip is null ? data.BillingZip : data.ShippingZip,
-                        shippingAddress = data.ShippingAddress is null ? data.BillingAddress : data.ShippingAddress
+                        shippingAddress = data.ShippingAddress is null ? data.BillingAddress : data.ShippingAddress,
+                        OrderPrice = $"{data.TotalPrice} Ft"
                     }
                 }
             };

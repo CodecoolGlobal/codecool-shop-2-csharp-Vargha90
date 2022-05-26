@@ -25,7 +25,7 @@ namespace Codecool.CodecoolShop.Controllers
             string billingCountry, string billingCity, string billingZip, string billingAddress,
             string shippingCountry, string shippingCity, string shippingZip, string shippingAddress)
         {
-            CustomerData data = new CustomerData(name, email, phone,
+            CustomerData data = new CustomerData(totalPrice.ToString("C2"), name, email, phone,
                 billingCountry, billingCity, billingZip, billingAddress,
                 shippingCountry, shippingCity, shippingZip, shippingAddress);
             Util.CreateJson(data);
