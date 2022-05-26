@@ -6,10 +6,20 @@ namespace Codecool.CodecoolShop.Daos.Implementations
     public class OrderDaoMemory : ILineItemDao
     {
         private List<LineItem> data = new List<LineItem>();
+        private static OrderDaoMemory instance = null;
 
-        public OrderDaoMemory(List<LineItem> data)
+        private OrderDaoMemory()
         {
-            this.data = data;
+        }
+
+        public static OrderDaoMemory GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new OrderDaoMemory();
+            }
+
+            return instance;
         }
 
         public void Add(LineItem item)
