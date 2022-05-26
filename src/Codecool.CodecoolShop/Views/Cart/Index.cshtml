@@ -1,9 +1,42 @@
-﻿@using System.Security.Principal
-@{
+﻿@{
     ViewData["Title"] = "Shopping cart";
 }
 
 <h1 align="center">Your cart:</h1><br/><br/><br/>
+
+@model List<Codecool.CodecoolShop.Models.Product>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{ int i = 1;}
+    @{ decimal totalPrice = 0;}
+    @foreach (var element in Model)
+    {
+        <tr>
+            <th scope="row">@i</th>
+            @{ i++;}
+            <td>@element.Name</td>
+            <td>2</td>
+            <td>@element.DefaultPrice.ToString("C2")</td>
+        </tr>
+        totalPrice += element.DefaultPrice * 2;
+    }
+    <tr>
+        <th scope="row">Sum:</th>
+        <td></td>
+        <td></td>
+        <td>@totalPrice.ToString("C2")</td>
+    </tr>
+    </tbody>
+</table>
 
 <div class="container" align="center">
     <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index","Product")'">Back</button>
@@ -45,8 +78,10 @@
 
             <div class="modal-body">
                 <form method="POST" id="customerDetails">
+                    
+                    <input type="hidden" name="totalPrice" value="@totalPrice" />
 
-                    <!-- Grid row -->
+                           <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="customerName" class="col-sm-2 col-form-label">Name*</label>
