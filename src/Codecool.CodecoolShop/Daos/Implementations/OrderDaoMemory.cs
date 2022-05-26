@@ -5,24 +5,32 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 {
     public class OrderDaoMemory : ILineItemDao
     {
+        private List<LineItem> data = new List<LineItem>();
+
+        public OrderDaoMemory(List<LineItem> data)
+        {
+            this.data = data;
+        }
+
         public void Add(LineItem item)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public LineItem Get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<LineItem> GetAll()
-        {
-            throw new System.NotImplementedException();
+            item.Id = data.Count + 1;
+            data.Add(item);
         }
 
         public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            data.Remove(this.Get(id));
+        }
+
+        public LineItem Get(int id)
+        {
+            return data.Find(x => x.Id == id);
+        }
+
+        public IEnumerable<LineItem> GetAll()
+        {
+            return data;
         }
     }
 }
