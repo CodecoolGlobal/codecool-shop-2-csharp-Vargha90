@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -22,14 +24,54 @@ namespace Codecool.CodecoolShop.Controllers
             _logger = logger;
             ProductService = new ProductService(
                 ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
+                ProductCategoryDaoMemory.GetInstance(),
+                SupplierDaoMemory.GetInstance());
         }
 
         public IActionResult Index()
         {
-            var products = ProductService.GetProductsForCategory(1);
-            return View(products.ToList());
+            var products = ProductService.GetAllProducts();
+            var suppliers = ProductService.GetAllSuppliers();
+            var categories = ProductService.GetAllCategories();
+            ViewModel model = new()
+            {
+                Products = products,
+                Categories = categories,
+                Suppliers = suppliers
+            };
+
+            return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Filter(string supplier)
+        {
+            return RedirectToAction("Index", "Product");
+        }
+
+
+
+        //public IActionResult Index(IEnumerable<Product> filteredProducts)
+        //{
+        //    var suppliers = ProductService.GetAllSuppliers();
+        //    var categories = ProductService.GetAllCategories();
+        //    ViewModel model = new ViewModel();
+        //    model.Products = filteredProducts;
+        //    model.Categories = categories;
+        //    model.Suppliers = suppliers;
+        //    return View(model);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Filter(string name)
+        //{
+        //    IEnumerable<Product> products;
+        //    if (name != null)
+        //        products = ProductService.GetProductsForSupplier(name);
+        //    else 
+        //        products = ProductService.GetAllProducts();
+        //    return RedirectToAction("Index", "Product", products);
+        //}
 
         public IActionResult Privacy()
         {
