@@ -49,7 +49,7 @@ namespace Codecool.CodecoolShop
                     ($"{AppDomain.CurrentDomain.BaseDirectory}/Order-data/Order-number.txt"));
                 return orderId;
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 return 0;
             }

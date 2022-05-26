@@ -1,18 +1,13 @@
-﻿@{
+﻿@using System.Security.Principal
+@{
     ViewData["Title"] = "Shopping cart";
 }
 
 <h1 align="center">Your cart:</h1><br/><br/><br/>
 
 <div class="container" align="center">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">
-        <button type="button" class="btn btn-secondary">
-            Back
-        </button>
-    </a>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">
-        Checkout
-    </button>
+    <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index","Product")'">Back</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">Checkout</button>
 </div>
 
 <!-- ConfirmationModal -->
@@ -29,9 +24,7 @@
                 <p>Do you wish to proceed to pay?</p>
             </div>
             <div class="modal-footer">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">
-                    <button type="button" class="btn btn-secondary">Continue shopping</button>
-                </a>
+                <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index","Product")'">Continue shopping</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#customerFormModal">Checkout</button>
             </div>
         </div>
@@ -166,7 +159,7 @@
                         <label for="inputShippingZip" class="col-sm-2 col-form-label">Zip code</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="number" class="form-control" id="inputShippingZip" placeholder="1111" pattern="[0-9]{4}" name="shippingZip">
+                                <input type="number" class="form-control" id="inputShippingZip" placeholder="1111" pattern="[0-9]{4}" name="sZip">
                             </div>
                         </div>
                     </div>
@@ -177,7 +170,7 @@
                         <label for="inputShippingAddress" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
                             <div class="mt-0">
-                                <input type="text" class="form-control" id="inputShippingAddress" placeholder="Kossuth street 1." name="shippingAddress">
+                                <input type="text" class="form-control" id="inputShippingAddress" placeholder="Kossuth street 1." name="sAddress">
                             </div>
                         </div>
                     </div>
