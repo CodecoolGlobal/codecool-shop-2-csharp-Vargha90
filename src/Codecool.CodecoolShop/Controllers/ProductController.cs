@@ -38,6 +38,7 @@ namespace Codecool.CodecoolShop.Controllers
             // Name and Price here
             var price = Request.Form["price"];
             var name = Request.Form["name"];
+            LineItem item = new LineItem() { Name = name , Quantity=1 , UnitPrice= 22f, };
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
+using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Services
 {
@@ -9,6 +9,7 @@ namespace Codecool.CodecoolShop.Services
         private readonly IProductDao productDao;
         private readonly IProductCategoryDao productCategoryDao;
         private readonly ISupplierDao supplierDao;
+        private readonly ILineItemDao lineItemDao;
 
         public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ISupplierDao supplierDao)
         {
@@ -36,7 +37,7 @@ namespace Codecool.CodecoolShop.Services
             return productDao.GetBy(supplier);
         }
 
-        
+
 
         public void AddProduct(Product product) => productDao.Add(product);
 
