@@ -4,7 +4,7 @@
 
 <h1 align="center">Your cart:</h1><br/><br/><br/>
 
-@model List<Codecool.CodecoolShop.Models.Product>
+@model ViewModel
 
 <table class="table table-hover">
     <thead>
@@ -18,7 +18,7 @@
     <tbody>
     @{ int i = 1;}
     @{ decimal totalPrice = 0;}
-    @foreach (var element in Model)
+    @foreach (var element in Model.Products)
     {
         <tr>
             <th scope="row">@i</th>
@@ -78,10 +78,10 @@
 
             <div class="modal-body">
                 <form method="POST" id="customerDetails">
-                    
-                    <input type="hidden" name="totalPrice" value="@totalPrice" />
 
-                           <!-- Grid row -->
+                    <input type="hidden" name="totalPrice" value="@totalPrice"/>
+
+                    <!-- Grid row -->
                     <div class="form-group row">
                         <!-- Material input -->
                         <label for="customerName" class="col-sm-2 col-form-label">Name*</label>

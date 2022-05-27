@@ -4,6 +4,9 @@
 
 @model PriceModel
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
 <style>
     * {
         margin: 0;
@@ -93,6 +96,7 @@
     <div class="card px-4">
         <p class="h8 py-3">Payment Details</p>
         <div class="row gx-3">
+
             <div class="col-12">
                 <div class="d-flex flex-column">
                     <p class="text mb-1">Person Name</p>
@@ -118,11 +122,18 @@
                 </div>
             </div>
             <div class="col-12">
-                <div class="btn btn-primary mb-3">
-                    <span class="ps-3">Pay (@(Model.TotalPrice.ToString("C2")) Ft)</span>
-                    <span class="fas fa-arrow-right"></span>
-                </div>
+                @*<div class="btn btn-primary mb-3">*@
+                @*<span class="ps-3">Pay (@(Model.TotalPrice.ToString("C2")) Ft)</span>*@
+                        @*<span class="fas fa-arrow-right"></span>*@
+                @*<form method="POST">
+                    <input type="submit" asp-page-handler="SendEmail" value="Submit"/>*@
+                    <button type="submit" class="btn btn-primary mb-3" style="width: 450px" form="paymentDetails">
+                        Pay (@(Model.TotalPrice.ToString("C2")) Ft)
+                    </button>
+                    @*</div>*@
+                @*</form>*@
             </div>
+
         </div>
     </div>
 </div>

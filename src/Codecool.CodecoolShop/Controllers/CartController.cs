@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +13,14 @@ namespace Codecool.CodecoolShop.Controllers
         {
             ProductService = new ProductService(
                 ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
+                ProductCategoryDaoMemory.GetInstance(),
+                SupplierDaoMemory.GetInstance());
         }
         public IActionResult Index()
         {
-            var products = ProductService.GetProductsForCategory(1);
-            return View(products.ToList());
+            var model = new ViewModel();
+            model.Products = ProductService.GetAllProducts();
+            return View(model);
         }
 
         [HttpPost]
