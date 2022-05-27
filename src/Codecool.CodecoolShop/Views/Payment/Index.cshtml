@@ -122,16 +122,12 @@
                 </div>
             </div>
             <div class="col-12">
-                @*<div class="btn btn-primary mb-3">*@
-                @*<span class="ps-3">Pay (@(Model.TotalPrice.ToString("C2")) Ft)</span>*@
-                        @*<span class="fas fa-arrow-right"></span>*@
-                @*<form method="POST">
-                    <input type="submit" asp-page-handler="SendEmail" value="Submit"/>*@
+                <a asp-area="" asp-controller="Payment" asp-action="SendEmail">
                     <button type="submit" class="btn btn-primary mb-3" style="width: 450px" form="paymentDetails">
                         Pay (@(Model.TotalPrice.ToString("C2")) Ft)
                     </button>
-                    @*</div>*@
-                @*</form>*@
+                </a>
+
             </div>
 
         </div>

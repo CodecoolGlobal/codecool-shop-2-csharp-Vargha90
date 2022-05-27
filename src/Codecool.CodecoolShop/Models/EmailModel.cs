@@ -1,8 +1,3 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-
 namespace Codecool.CodecoolShop.Models
 {
     public class EmailModel

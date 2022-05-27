@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Codecool.CodecoolShop.Daos.Implementations;
+﻿using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
