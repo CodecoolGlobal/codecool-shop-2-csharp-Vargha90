@@ -30,8 +30,10 @@ namespace Codecool.CodecoolShop.Controllers
             CustomerData data = new CustomerData(totalPrice.ToString("C2"), name, email, phone,
                 billingCountry, billingCity, billingZip, billingAddress,
                 shippingCountry, shippingCity, shippingZip, shippingAddress);
+            TempData["tPrize"] = totalPrice.ToString("C2");
+            TempData["email"] = email;
             Util.CreateJson(data);
-            return RedirectToAction("Index", "Payment", new {price = totalPrice});
+            return RedirectToAction("Index", "Payment");
         }
     }
 }

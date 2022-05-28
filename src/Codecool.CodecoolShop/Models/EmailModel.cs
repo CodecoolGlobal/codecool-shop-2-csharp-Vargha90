@@ -8,9 +8,9 @@ namespace Codecool.CodecoolShop.Models
         //public IFormFile Attachment { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public EmailModel()
+        public EmailModel(string email)
         {
-            To = "varghalaszlo90@gmail.com";
+            To = email;
             Subject = "Order confirmation";
             Body = "Thank you for your order!";
             Email = "nukaflammenwerfertorpedo@gmail.com";

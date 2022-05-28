@@ -124,7 +124,7 @@
             <div class="col-12">
                 <a asp-area="" asp-controller="Payment" asp-action="SendEmail">
                     <button type="submit" class="btn btn-primary mb-3" style="width: 450px" form="paymentDetails">
-                        Pay (@(Model.TotalPrice.ToString("C2")) Ft)
+                        Pay @(Model.TotalPrice)
                     </button>
                 </a>
 
