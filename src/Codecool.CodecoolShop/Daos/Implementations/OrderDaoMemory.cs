@@ -38,7 +38,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             
         }
 
-        // DO NOT USE THIS
+        /// DO NOT USE THIS <summary>
+        /// DO NOT USE THIS
+        /// </summary>
+        /// <param name="id"></param>
+        [System.Obsolete]
         public void Remove(int id)
         {
             data.Remove(Get(id));
