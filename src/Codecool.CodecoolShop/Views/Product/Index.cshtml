@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Home Page";
+    int i = 0;
 }
 
 @model List<Codecool.CodecoolShop.Models.Product>
@@ -22,7 +23,7 @@
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>
                     <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <input type="hidden" value="@element.Name" name="name">
+                    <input type="hidden" asp-for="@element.Name" value="@element.Name" name="name">
                     <input type="hidden" value="@element.DefaultPrice" name="price">
                     @*<a asp-action="AddToCart" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>*@
                     <button type="submit" class="btn btn-primary" style="float: bottom">Add To Cart</button>

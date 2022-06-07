@@ -33,9 +33,10 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddToCart()
+        public IActionResult AddToCart(Product product)
         {
             // Name and Price here
+            var show = product.Name;
             var price = Request.Form["price"];
             var name = Request.Form["name"];
             LineItem item = new LineItem() { Name = name , Quantity=1 , UnitPrice= 22f, };
