@@ -1,32 +1,58 @@
 @{
     ViewData["Title"] = "Home Page";
+    int i = 0;
 }
 
-@model List<Codecool.CodecoolShop.Models.Product>
+@model ViewModel
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column w-50 p-3">
+        @using (Html.BeginForm("Filter"))
+        {
+            <div class="d-flex flex-column m-5">
+                <h5 class="border-bottom">Categories</h5>
+                @foreach (var element in Model.Categories)
+                {
+                    <div class="mb-2">
+                    @element.Name
+                    @Html.CheckBox("Name", false, new {onclick="this.form.submit();"})
+                    </div>
+                }
+            </div>
+            <div class="d-flex flex-column m-5">
+                <h5 class="border-bottom">Suppliers</h5>
+                @foreach (var element in Model.Suppliers)
+                {
+                    <div class="mb-2">
+                    @element.Name
+                    @Html.CheckBox("Name", element.Name == "Lenovo", new {onclick="this.form.submit();", value=$"{element.Name}"})
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="container w-auto p-2 d-flex flex-wrap">
+        @foreach (var element in Model.Products)
+        {
+            <div class="card m-lg-2" style="max-width: 360px; height: 480px;">
+                    <img src="img/@(element.Name).jpg" style="height: auto; max-width: 50%; align-self: center; padding-top: 10px">
 
-<div class="container">
-    @foreach (var element in Model)
-    {
-        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
-            <div class="card">
-                <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
-
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        Product
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Product
                         @{ var num = Model.IndexOf(element) + 1;}
                         @num
-                    </h5>
-                    <h5 class="card-title">@element.Name</h5>
-                    <p class="card-text">@element.Description.</p>
-                    <p class="card-text">Category: @element.ProductCategory.Department</p>
-                    <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                        </h5>
+                        <h5 class="card-title">@element.Name</h5>
+                        <p class="card-text">@element.Description.</p>
+                        <p class="card-text">Category: @element.ProductCategory.Department</p>
+                        <p class="card-text">Supplier: @element.Supplier.Name</p>
+                        <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                        <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                    </div>
                 </div>
-            </div>
         </div>
-    }
+        }
 
 
+    </div>
 </div>
