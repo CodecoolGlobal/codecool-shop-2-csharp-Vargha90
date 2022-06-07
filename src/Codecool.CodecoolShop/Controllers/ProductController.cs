@@ -1,9 +1,10 @@
-using System.Diagnostics;
 using Codecool.CodecoolShop.Daos.Implementations;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.Linq;
 
 
 namespace Codecool.CodecoolShop.Controllers
@@ -70,6 +71,16 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult AddToCart(Product product)
+        {
+            // Name and Price here
+            var show = product.Name;
+            var price = Request.Form["price"];
+            var name = Request.Form["name"];
+            LineItem item = new LineItem() { Name = name , Quantity=1 , UnitPrice= 22f, };
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
