@@ -27,7 +27,7 @@
                         <a href="#exampleModalCenter" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="" asp-action="">Register</a>
+                        <a class="nav-link" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
                     </li>
                 </ul>
             </div>
@@ -65,14 +65,14 @@
                         <input type="text" class="form-control" id="username"/>
                         <label for="password" class="col-form-label">Password:</label>
                         <input type="password" class="form-control" id="password"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
                     </form>
-                    
-                    <p class="small">Not registered? Click <a asp-area="" asp-controller="" asp-action="">here</a> to join our community!</p>
+                    <p class="small">Not registered? Click <a asp-area="" asp-controller="Register" asp-action="Index">here</a> to join our community!</p>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Login</button>
-                </div>
+
             </div>
         </div>
     </div>
