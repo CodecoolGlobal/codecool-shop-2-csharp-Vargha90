@@ -52,7 +52,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             if (item.Quantity == 1)
             {
-                data.Remove(Get(id));
+                data.Remove(item);
             }
             else
             {
@@ -65,6 +65,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return data.Find(x => x.Id == id);
         }
         // redundant
+        [System.Obsolete]
         public IEnumerable<LineItem> GetAll()
         {
             return data;

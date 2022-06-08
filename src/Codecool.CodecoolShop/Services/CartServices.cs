@@ -12,6 +12,11 @@ namespace Codecool.CodecoolShop.Services
         {
             _lineItemDao = lineItemDao;
         }
+
+        public void AddLineItem(LineItem lineItem) => _lineItemDao.Add(lineItem);
+
         public IEnumerable<LineItem> GetAllLineItems() => _lineItemDao.GetAll();
+
+        public void RemoveLineItem(LineItem lineItem) => _lineItemDao.Remove()
     }
 }

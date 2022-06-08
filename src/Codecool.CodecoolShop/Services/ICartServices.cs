@@ -7,5 +7,7 @@ namespace Codecool.CodecoolShop.Services
     {
         public IEnumerable<LineItem> GetAllLineItems();
         
+        public void AddLineItem(LineItem lineItem);
+        public void RemoveLineItem(LineItem lineItem);
     }
 }
