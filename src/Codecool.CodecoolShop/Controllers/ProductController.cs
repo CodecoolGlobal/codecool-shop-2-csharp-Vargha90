@@ -33,6 +33,17 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Index()
         {
+            var products = ProductService.GetAllProducts();
+            var suppliers = ProductService.GetAllSuppliers();
+            var categories = ProductService.GetAllCategories();
+            ViewModel model = new()
+            {
+                Products = products,
+                Categories = categories,
+                Suppliers = suppliers
+            };
+
+            return View(model);
         }
 
 
