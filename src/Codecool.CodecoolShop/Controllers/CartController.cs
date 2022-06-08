@@ -11,13 +11,14 @@ namespace Codecool.CodecoolShop.Controllers
         public CartServices CartService { get; set; }
         public CartController()
         {
-            CartService = new CartServices(LineItemDaoMemory.GetInstance());
+            CartService = new CartServices(OrderDaoMemory.GetInstance());
         }
 
 
-        public IActionResult Index(List<LineItem> items)
+        public IActionResult Index(List<LineItemModel> items)
         {
-            return View(items);
+            var model = CartService.GetAllLineItems();
+            return View(model);
         }
 
         [HttpPost]

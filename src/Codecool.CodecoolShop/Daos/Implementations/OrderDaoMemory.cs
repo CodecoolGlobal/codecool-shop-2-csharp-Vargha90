@@ -6,7 +6,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 {
     public class OrderDaoMemory : ILineItemDao
     {
-        private List<LineItem> data = new List<LineItem>();
+        private List<LineItemModel> data = new List<LineItemModel>();
         private static OrderDaoMemory instance = null;
 
         private OrderDaoMemory()
@@ -23,12 +23,12 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             return instance;
         }
 
-        public void Add(LineItem item)
+        public void Add(LineItemModel item)
         {
             
-            if (data.Any(e => e.Id == item.Id))
+            if (data.Any(e => e.Name == item.Name))
             {
-                item.Quantity++;
+                data[item.Id].Quantity++;
             }
             else
             {
@@ -48,7 +48,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             data.Remove(Get(id));
         }
 
-        public void Remove(LineItem item, int id)
+        public void Remove(LineItemModel item)
         {
             if (item.Quantity == 1)
             {
@@ -60,13 +60,13 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             }
         }
 
-        public LineItem Get(int id)
+        public LineItemModel Get(int id)
         {
             return data.Find(x => x.Id == id);
         }
         // redundant
         [System.Obsolete]
-        public IEnumerable<LineItem> GetAll()
+        public IEnumerable<LineItemModel> GetAll()
         {
             return data;
         }

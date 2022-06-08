@@ -9,6 +9,6 @@ namespace Codecool.CodecoolShop.Models
         public IEnumerable<Supplier> Suppliers { get; set; }
         public IEnumerable<ProductCategory> Categories { get; set; }
 
-        public IEnumerable<LineItem> LineItems { get; set; }
+        public IEnumerable<LineItemModel> LineItems { get; set; }
     }
 }

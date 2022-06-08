@@ -22,7 +22,7 @@ namespace Codecool.CodecoolShop.Controllers
                 ProductDaoMemory.GetInstance(),
                 ProductCategoryDaoMemory.GetInstance(),
                 SupplierDaoMemory.GetInstance());
-            CartServices = new CartServices(LineItemDaoMemory.GetInstance());
+            CartServices = new CartServices(OrderDaoMemory.GetInstance());
         }
         [HttpGet]
         public IActionResult Index()
@@ -64,9 +64,9 @@ namespace Codecool.CodecoolShop.Controllers
             var price = Request.Form["price"];
             var name = Request.Form["name"];
             var priceInt = float.Parse(price);
-            LineItem item = new LineItem() { Name = name, Quantity = 1, UnitPrice = priceInt };
-            CartServices.
-            return RedirectToAction("Index", "Cart", item);
+            LineItemModel item = new LineItemModel() { Name = name, UnitPrice = (int)priceInt };
+            CartServices.AddLineItem(item);
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

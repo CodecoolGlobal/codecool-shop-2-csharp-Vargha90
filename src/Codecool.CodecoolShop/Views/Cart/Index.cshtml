@@ -4,7 +4,7 @@
 
 <h1 align="center">Your cart:</h1><br/><br/><br/>
 
-@model ViewModel
+@model List<LineItemModel>
 
 <table class="table table-hover">
     <thead>
@@ -18,16 +18,16 @@
     <tbody>
     @{ int i = 1;}
     @{ decimal totalPrice = 0;}
-    @foreach (var element in Model.Products)
+    @foreach (var element in Model)
     {
         <tr>
             <th scope="row">@i</th>
             @{ i++;}
             <td>@element.Name</td>
-            <td>2</td>
-            <td>@element.DefaultPrice.ToString("C2")</td>
+            <td>@element.Quantity</td>
+            <td>@element.UnitPrice.ToString("C2")</td>
         </tr>
-        totalPrice += element.DefaultPrice * 2;
+        totalPrice += element.UnitPrice * element.Quantity;
     }
     <tr>
         <th scope="row">Sum:</th>

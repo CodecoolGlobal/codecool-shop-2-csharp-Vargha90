@@ -5,9 +5,9 @@ namespace Codecool.CodecoolShop.Services
 {
     public interface ICartServices
     {
-        public IEnumerable<LineItem> GetAllLineItems();
+        public IEnumerable<LineItemModel> GetAllLineItems();
         
-        public void AddLineItem(LineItem lineItem);
-        public void RemoveLineItem(LineItem lineItem);
+        public void AddLineItem(LineItemModel lineItem);
+        public void RemoveLineItem(LineItemModel lineItem);
     }
 }
