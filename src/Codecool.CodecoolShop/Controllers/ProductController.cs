@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
@@ -9,10 +10,7 @@ using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.Linq;
-using Codecool.CodecoolShop.Models;
-using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Http;
 
 
 namespace Codecool.CodecoolShop.Controllers
@@ -31,22 +29,18 @@ namespace Codecool.CodecoolShop.Controllers
                 SupplierDaoMemory.GetInstance());
         }
 
-        public IActionResult Index()
+        public IActionResult Index(IEnumerable<Product> filteredProducts)
         {
+            var suppliers = ProductService.GetAllSuppliers();
+            var categories = ProductService.GetAllCategories();
+            ViewModel model = new ViewModel();
+            model.Products = filteredProducts;
+            model.Categories = categories;
+            model.Suppliers = suppliers;
+            //HttpContext.Session.SetString("test", "hello");
+            //string value = HttpContext.Session.GetString("test");
+            return View(model);
         }
-
-
-
-        //public IActionResult Index(IEnumerable<Product> filteredProducts)
-        //{
-        //    var suppliers = ProductService.GetAllSuppliers();
-        //    var categories = ProductService.GetAllCategories();
-        //    ViewModel model = new ViewModel();
-        //    model.Products = filteredProducts;
-        //    model.Categories = categories;
-        //    model.Suppliers = suppliers;
-        //    return View(model);
-        //}
 
         //[HttpPost]
         //public IActionResult Filter(string name)
