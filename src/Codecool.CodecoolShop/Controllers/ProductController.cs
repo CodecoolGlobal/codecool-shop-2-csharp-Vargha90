@@ -29,12 +29,13 @@ namespace Codecool.CodecoolShop.Controllers
                 SupplierDaoMemory.GetInstance());
         }
 
-        public IActionResult Index(IEnumerable<Product> filteredProducts)
+        public IActionResult Index()
         {
             var suppliers = ProductService.GetAllSuppliers();
             var categories = ProductService.GetAllCategories();
+            var products = ProductService.GetAllProducts();
             ViewModel model = new ViewModel();
-            model.Products = filteredProducts;
+            model.Products = products;
             model.Categories = categories;
             model.Suppliers = suppliers;
             //HttpContext.Session.SetString("test", "hello");
