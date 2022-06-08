@@ -13,7 +13,7 @@ namespace Codecool.CodecoolShop.Models
             To = email;
             Subject = "Order confirmation";
             Body = "Thank you for your order!";
-            Email = "nukaflammenwerfertorpedo@gmail.com";
+            Email = "nukashop@outlook.com";
             Password = "Asptorpedo";
         }
     }
