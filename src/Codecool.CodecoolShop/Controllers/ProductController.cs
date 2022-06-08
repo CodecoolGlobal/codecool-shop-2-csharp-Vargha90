@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
@@ -19,6 +13,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
+        public CartServices CartServices { get; set; }
 
         public ProductController(ILogger<ProductController> logger)
         {
@@ -27,6 +22,7 @@ namespace Codecool.CodecoolShop.Controllers
                 ProductDaoMemory.GetInstance(),
                 ProductCategoryDaoMemory.GetInstance(),
                 SupplierDaoMemory.GetInstance());
+            CartServices = new CartServices(LineItemDaoMemory.GetInstance());
         }
         [HttpGet]
         public IActionResult Index()
@@ -69,6 +65,7 @@ namespace Codecool.CodecoolShop.Controllers
             var name = Request.Form["name"];
             var priceInt = float.Parse(price);
             LineItem item = new LineItem() { Name = name, Quantity = 1, UnitPrice = priceInt };
+            CartServices.
             return RedirectToAction("Index", "Cart", item);
         }
 

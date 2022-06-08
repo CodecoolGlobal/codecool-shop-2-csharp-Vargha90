@@ -8,5 +8,7 @@ namespace Codecool.CodecoolShop.Models
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<Supplier> Suppliers { get; set; }
         public IEnumerable<ProductCategory> Categories { get; set; }
+
+        public IEnumerable<LineItem> LineItems { get; set; }
     }
 }

@@ -17,5 +17,17 @@ namespace Codecool.CodecoolShop.Services
         public IEnumerable<Product> GetProductsForSupplier(string supplier);
 
         public IEnumerable<Supplier> GetSuppliersForCategory(int categoryId);
+
+        public void AddProduct(Product product);
+
+        public void AddProductCategory(ProductCategory category);
+
+        public void AddSupplier(Supplier supplier);
+
+
+
+        public void RemoveProduct(int productId);
+        public void RemoveProductCategory(int categoryId);
+        public void RemoveSupplier(int supplierId);
     }
 }

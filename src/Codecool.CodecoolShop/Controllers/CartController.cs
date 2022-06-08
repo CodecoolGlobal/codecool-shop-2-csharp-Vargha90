@@ -2,25 +2,22 @@
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class CartController : Controller
     {
-        public ProductService ProductService { get; set; }
+        public CartServices CartService { get; set; }
         public CartController()
         {
-            ProductService = new ProductService(
-                ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance(),
-                SupplierDaoMemory.GetInstance());
+            CartService = new CartServices(LineItemDaoMemory.GetInstance());
         }
-        public IActionResult Index(LineItem model)
+
+
+        public IActionResult Index(List<LineItem> items)
         {
-            //var model = new ViewModel();
-            //model.Products = ProductService.GetAllProducts();
-            var x = 0;
-            return View(model);
+            return View(items);
         }
 
         [HttpPost]
