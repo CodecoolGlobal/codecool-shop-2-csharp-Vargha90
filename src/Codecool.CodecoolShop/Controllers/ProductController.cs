@@ -28,7 +28,7 @@ namespace Codecool.CodecoolShop.Controllers
                 ProductCategoryDaoMemory.GetInstance(),
                 SupplierDaoMemory.GetInstance());
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             var suppliers = ProductService.GetAllSuppliers();
@@ -42,6 +42,8 @@ namespace Codecool.CodecoolShop.Controllers
             //string value = HttpContext.Session.GetString("test");
             return View(model);
         }
+
+        
 
         //[HttpPost]
         //public IActionResult Filter(string name)
@@ -65,8 +67,9 @@ namespace Codecool.CodecoolShop.Controllers
             var show = product.Name;
             var price = Request.Form["price"];
             var name = Request.Form["name"];
-            LineItem item = new LineItem() { Name = name , Quantity=1 , UnitPrice= 22f, };
-            return RedirectToAction(nameof(Index));
+            var priceInt = float.Parse(price);
+            LineItem item = new LineItem() { Name = name, Quantity = 1, UnitPrice = priceInt };
+            return RedirectToAction("Index", "Cart", item);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

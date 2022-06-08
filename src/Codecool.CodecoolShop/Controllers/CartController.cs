@@ -15,10 +15,11 @@ namespace Codecool.CodecoolShop.Controllers
                 ProductCategoryDaoMemory.GetInstance(),
                 SupplierDaoMemory.GetInstance());
         }
-        public IActionResult Index()
+        public IActionResult Index(LineItem model)
         {
-            var model = new ViewModel();
-            model.Products = ProductService.GetAllProducts();
+            //var model = new ViewModel();
+            //model.Products = ProductService.GetAllProducts();
+            var x = 0;
             return View(model);
         }
 
