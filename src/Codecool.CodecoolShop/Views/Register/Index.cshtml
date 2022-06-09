@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid my-5">
+    <h1>Register</h1>
+</div>
+<div class="container-fluid">
+    <p class="my-3 font-italic">Please fill our registry form and enjoy the benefits of a registered user</p>
+    <hr/>
+    <form>
+        <label for="first-name" class="col-form-label">First name:</label>
+        <input class="form-control" type="text" id="first-name"/>
+        <label for="last-name" class="col-form-label">Last name:</label>
+        <input class="form-control" type="text" id="last-name"/>
+        <label for="e-mail" class="col-form-label">E-mail:</label>
+        <input class="form-control" type="email" id="e-mail"/>
+        <label for="password" class="col-form-label">Password:</label>
+        <input class="form-control" type="password" id="password"/>
+        <label for="repeated-password" class="col-form-label">Confirm password:</label>
+        <input class="form-control" type="password" id="repeated-password"/>
+        <div class="custom-control custom-checkbox mt-2">
+            <input type="checkbox" class="custom-control-input" id="newsletter" checked>
+            <label class="custom-control-label" for="newsletter">I would like to receive useless mail from this company at least twice daily</label>
+        </div>
+        <hr/>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
