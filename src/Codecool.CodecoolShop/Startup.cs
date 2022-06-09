@@ -87,7 +87,7 @@ namespace Codecool.CodecoolShop
             Supplier colt = new Supplier { Name = "Colt", Description = "America... fuck yeah!" };
             supplierDataStore.Add(colt);
             ProductCategory futuristic = new ProductCategory {Name = "Futuristic", Department = "Gun", Description = "Cutting edge technology"};
-            ProductCategory ar = new ProductCategory { Name = "Assault Rifle", Department = "Gun", Description = "Cutting edge technology" };
+            ProductCategory ar = new ProductCategory { Name = "Assault Rifle", Department = "Gun", Description = "Cutting edge technology, but faster" };
             ProductCategory flamethrower = new ProductCategory { Name = "Not Geneva Compatible", Department = "Banned", Description = "Fun, but maybe not for everyone" };
             ProductCategory bomb = new ProductCategory { Name = "Bomb", Department = "Explosives", Description = "For explosive finishes" };
             ProductCategory handgun = new ProductCategory {Name = "Handgun", Department = "Gun", Description = "Travelers favourite"};
