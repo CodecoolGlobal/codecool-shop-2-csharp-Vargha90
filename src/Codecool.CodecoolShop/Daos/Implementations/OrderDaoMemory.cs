@@ -47,7 +47,8 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             data.Remove(Get(id));
         }
-
+        
+        // DOESN'T WORK WITH ONE ITEM
         public void Remove(LineItemModel item)
         {
             if (data[item.Id-1].Quantity == 1)
