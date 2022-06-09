@@ -2,7 +2,6 @@
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -15,10 +14,34 @@ namespace Codecool.CodecoolShop.Controllers
         }
 
 
-        public IActionResult Index(List<LineItemModel> items)
+        public IActionResult Index()
         {
             var model = CartService.GetAllLineItems();
             return View(model);
+        }
+
+        public IActionResult AddItem()
+        {
+            var price = Request.Form["price"];
+            var name = Request.Form["name"];
+            var idStr = Request.Form["id"];
+            var id = int.Parse(idStr);
+            var priceInt = float.Parse(price);
+            LineItemModel item = new LineItemModel() { Name = name, UnitPrice = (int)priceInt, Id = id };
+            CartService.AddLineItem(item);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveItem()
+        {
+            var price = Request.Form["price"];
+            var name = Request.Form["name"];
+            var idStr = Request.Form["id"];
+            var id = int.Parse(idStr);
+            var priceInt = float.Parse(price);
+            LineItemModel item = new LineItemModel() { Name = name, UnitPrice = (int)priceInt, Id = id };
+            CartService.RemoveLineItem(item);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]

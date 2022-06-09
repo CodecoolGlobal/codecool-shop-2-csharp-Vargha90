@@ -28,7 +28,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
             
             if (data.Any(e => e.Name == item.Name))
             {
-                data[item.Id].Quantity++;
+                data[item.Id-1].Quantity++;
             }
             else
             {
@@ -50,13 +50,13 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 
         public void Remove(LineItemModel item)
         {
-            if (item.Quantity == 1)
+            if (data[item.Id-1].Quantity == 1)
             {
-                data.Remove(item);
+                data.RemoveAt(item.Id-1);
             }
             else
             {
-                item.Quantity--;
+                data[item.Id - 1].Quantity--;
             }
         }
 

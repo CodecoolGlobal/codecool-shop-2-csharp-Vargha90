@@ -4,7 +4,6 @@
     {
         public int Quantity { get; set; } = 1;
         public int UnitPrice { get; set; }
-        //public float Total { get => UnitPrice * Quantity; }
 
     }
 }

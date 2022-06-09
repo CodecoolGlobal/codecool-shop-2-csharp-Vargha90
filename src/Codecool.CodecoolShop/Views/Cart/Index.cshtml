@@ -22,16 +22,24 @@
     @{ decimal totalPrice = 0;}
     @foreach (var element in Model)
     {
+        <form  method="post">
         <tr>
-            <td><a href="" type="button" class="btn-link">-</a></td>
+            <td><button type="submit" asp-action="RemoveItem" class="btn-link">-</button></td>
             <th scope="row">@i</th>
-             <td><a href="" type="button" class="btn-link">+</a></td>
+             <td><button type="submit" asp-action="AddItem" class="btn-link">+</button></td>
             @{ i++;}
             <td>@element.Name</td>
             <td>@element.Quantity</td>
             <td>@element.UnitPrice.ToString("C2")</td>
+            <td>@element.Id</td>
+            <input type="hidden" name="name" value="@element.Name">
+             <input type="hidden" name="price" value="@element.UnitPrice">
+             <input type="hidden" name="id" value="@element.Id">
         </tr>
-        totalPrice += element.UnitPrice * element.Quantity;
+                @{
+                    totalPrice += element.UnitPrice * element.Quantity;
+                }
+            </form>
     }
     <tr>
         <th scope="row">Sum:</th>

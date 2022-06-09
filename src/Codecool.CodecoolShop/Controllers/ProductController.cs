@@ -57,10 +57,9 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddToCart(Product product)
+        public IActionResult AddToCart()
         {
             // Name and Price here
-            var show = product.Name;
             var price = Request.Form["price"];
             var name = Request.Form["name"];
             var priceInt = float.Parse(price);
