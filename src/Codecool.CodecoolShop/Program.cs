@@ -1,10 +1,8 @@
-using Codecool.CodecoolShop.Daos.Implementations;
+using Serilog;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using System;
 
 namespace Codecool.CodecoolShop
 {
@@ -12,27 +10,33 @@ namespace Codecool.CodecoolShop
     {
         public static void Main(string[] args)
         {
+            //Read Configuration from appSettings
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            //Initialize Logger
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(config)
+                .CreateLogger();
+            try
+            {
+                Log.Information("Application Starting.");
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "The Application failed to start.");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
             CreateHostBuilder(args).Build().Run();
-            //1. Get the IWebHost which will host this application.
-            //IWebHost host = Host.CreateWebHostBuilder(args).Build();
-
-            ////2. Find the service layer within our scope.
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    //3. Get the instance of BoardGamesDBContext in our services layer
-            //    var services = scope.ServiceProvider;
-            //    var context = services.GetRequiredService<OrderDBContext>();
-
-            //    //4. Call the DataGenerator to create sample data
-            //    DataGenerator.Initialize(services);
-            //}
-
-            ////Continue to run the application
-            //host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
